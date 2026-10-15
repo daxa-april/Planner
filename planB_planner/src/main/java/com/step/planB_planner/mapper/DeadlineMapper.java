@@ -6,6 +6,8 @@ import com.step.planB_planner.model.entity.Deadline;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 /**
  * @author Daria Pevets
  **/
@@ -15,4 +17,6 @@ public interface DeadlineMapper {
     Deadline mapDeadlineRequestDtoToDeadline(DeadlineRequestDto deadlineRequestDto);
 
     DeadlineResponseDto mapDeadlineToDeadlineResponseDto(Deadline deadline);
+
+    List<DeadlineResponseDto> mapDeadlineListToDeadlineResponseDtoList(List<Deadline> deadlines);
 }

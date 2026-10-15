@@ -16,4 +16,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     Optional<Task> findTaskByName(String name);
 
     Optional<Task> findTaskByTime(LocalDateTime time);
+
+    Optional<Task> findTaskByTimeBetween(LocalDateTime start, LocalDateTime end);
 }

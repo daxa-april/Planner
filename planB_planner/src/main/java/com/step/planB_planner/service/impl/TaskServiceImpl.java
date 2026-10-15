@@ -12,18 +12,21 @@ import com.step.planB_planner.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Daria Pevets
  **/
 @Service
 @RequiredArgsConstructor
-public class TaskServiceImpl {
+public class TaskServiceImpl implements com.step.planB_planner.service.TaskService {
 
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
 
+    @Override
     public TaskResponseDto createTask(TaskRequestDto taskRequestDto) {
         if (taskRepository.findTaskByName(taskRequestDto.name()).isPresent()) {
             throw new TaskException("Task with name " + taskRequestDto.name() + " already exists");
@@ -70,6 +73,32 @@ public class TaskServiceImpl {
         } else {
             throw new TaskException("Task with id " + id + " does not exist");
         }
+    }
+
+    public List<TaskResponseDto> getTasksByRange(LocalDateTime start, LocalDateTime end) {
+        if (start.isAfter(end)) {
+            throw new IllegalArgumentException("Start date cannot be after end date");
+        }
+        List<Task> currentTasks = taskRepository.findTaskByTimeBetween(start, end).stream().toList();
+        return taskMapper.mapTaskListToTaskResponseDtoList(currentTasks);
+    }
+
+    public List<TaskResponseDto> getTasksByDay(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getTasksByRange(from, to);
+    }
+
+    public List<TaskResponseDto> getTasksByWeek(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getTasksByRange(from, to);
+    }
+
+    public List<TaskResponseDto> getTasksByMonth(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getTasksByRange(from, to);
     }
 }
 

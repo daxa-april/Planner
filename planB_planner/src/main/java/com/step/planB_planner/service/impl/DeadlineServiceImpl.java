@@ -13,7 +13,9 @@ import com.step.planB_planner.service.DeadlineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -79,5 +81,31 @@ public class DeadlineServiceImpl implements DeadlineService {
         } else {
             throw new IllegalArgumentException("Specified deadline does not exist!");
         }
+    }
+
+    public List<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end) {
+        if (start.isAfter(end)) {
+            throw new IllegalArgumentException("Start date cannot be after end date");
+        }
+        List<Deadline> currentDeadlines = deadlineRepository.getDeadlineByDeadlineBetween(start, end).stream().toList();
+        return deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(currentDeadlines);
+    }
+
+    public List<DeadlineResponseDto> getDeadlinesByDay(LocalDate day) {
+        LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getDeadlinesByRange(from, to);
+    }
+
+    public List<DeadlineResponseDto> getDeadlinesByWeek(LocalDate day) {
+        LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = day.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getDeadlinesByRange(from, to);
+    }
+
+    public List<DeadlineResponseDto> getDeadLinesByMonth(LocalDate day) {
+        LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = day.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getDeadlinesByRange(from, to);
     }
 }

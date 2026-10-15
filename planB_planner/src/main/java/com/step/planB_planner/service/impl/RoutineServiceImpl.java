@@ -12,6 +12,10 @@ import com.step.planB_planner.repository.RoutineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * @author Daria Pevets
  **/
@@ -72,5 +76,31 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
         } else {
             throw new IllegalArgumentException("Specified deadline does not exist!");
         }
+    }
+
+    public List<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end) {
+        if (start.isAfter(end)) {
+            throw new IllegalArgumentException("Start date cannot be after end date");
+        }
+        List<Routine> currentTasks = routineRepository.findRoutineByStartTimeBetween(start, end).stream().toList();
+        return routineMapper.mapRoutineToRoutineResponseDtoList(currentTasks);
+    }
+
+    public List<RoutineResponseDto> getRoutineByDay(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getRoutinesByRange(from, to);
+    }
+
+    public List<RoutineResponseDto> getTasksByWeek(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getRoutinesByRange(from, to);
+    }
+
+    public List<RoutineResponseDto> getTasksByMonth(LocalDate date) {
+        LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime to = date.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        return getRoutinesByRange(from, to);
     }
 }

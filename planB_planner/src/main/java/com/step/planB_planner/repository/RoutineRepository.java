@@ -16,4 +16,6 @@ public interface RoutineRepository extends JpaRepository<Routine, Long> {
     Optional<Routine> findRoutineByName(String name);
 
     Optional<Routine> findRoutineByStartTime(LocalDateTime startTime);
+
+    Optional<Routine> findRoutineByStartTimeBetween(LocalDateTime start, LocalDateTime end);
 }

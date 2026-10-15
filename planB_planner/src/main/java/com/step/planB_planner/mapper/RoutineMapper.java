@@ -6,6 +6,8 @@ import com.step.planB_planner.model.entity.Routine;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 /**
  * @author Daria Pevets
  **/
@@ -15,4 +17,6 @@ public interface RoutineMapper {
     Routine mapRoutineRequestDtoToRoutine(RoutineRequestDto routineRequestDto);
 
     RoutineResponseDto mapRoutineToRoutineResponseDto(Routine routine);
+
+    List<RoutineResponseDto> mapRoutineToRoutineResponseDtoList(List<Routine> routines);
 }

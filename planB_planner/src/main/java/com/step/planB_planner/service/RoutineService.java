@@ -5,6 +5,10 @@ import com.step.planB_planner.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.RoutineRequestDto;
 import com.step.planB_planner.model.dto.response.RoutineResponseDto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * @author Daria Pevets
  **/
@@ -17,4 +21,12 @@ public interface RoutineService {
     TaskStatus updateRoutineStatus(Long id, TaskStatus taskStatus);
 
     AppStatus deleteRoutine(Long id);
+
+    List<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end);
+
+    List<RoutineResponseDto> getRoutineByDay(LocalDate date);
+
+    List<RoutineResponseDto> getTasksByWeek(LocalDate date);
+
+    List<RoutineResponseDto> getTasksByMonth(LocalDate date);
 }

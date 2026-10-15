@@ -16,4 +16,6 @@ public interface DeadlineRepository extends JpaRepository<Deadline, Long> {
     Optional<Deadline> getDeadlineByName(String name);
 
     Optional<Deadline> getDeadlineByWhenGot(LocalDateTime whenGot);
+
+    Optional<Deadline> getDeadlineByDeadlineBetween(LocalDateTime whenGot, LocalDateTime deadline);
 }
