@@ -30,11 +30,9 @@ public class DeadlineServiceImpl implements DeadlineService {
     @Override
     public DeadlineResponseDto addDeadline(DeadlineRequestDto deadlineRequestDto) {
 
-        if (deadlineRequestDto.deadLine().isBefore(LocalDateTime.now())) {
-            throw new IllegalTimeArgument("Такой продуктивности не бывает!");
-        } else if (deadlineRequestDto.whenGot().isBefore(LocalDateTime.now())) {
+        if (deadlineRequestDto.theEnd().isBefore(LocalDateTime.now())) {
             throw new IllegalTimeArgument("Я понимаю, что задача должна быть выполнена еще вчера, но будь реалистом!");
-        } else if (deadlineRequestDto.whenGot().isAfter(deadlineRequestDto.deadLine())) {
+        } else if (deadlineRequestDto.whenGot().isAfter(deadlineRequestDto.theEnd())) {
             throw new IllegalTimeArgument("Совсем сдурел?");
         } else if (deadlineRepository.getDeadlineByName(deadlineRequestDto.name()).isPresent()) {
             throw new TaskException("А ты очень забывчив(а) однако!");
@@ -42,6 +40,7 @@ public class DeadlineServiceImpl implements DeadlineService {
             throw new TaskException("Может таблеточки попить?");
         } else {
             Deadline deadline = deadlineMapper.mapDeadlineRequestDtoToDeadline(deadlineRequestDto);
+            deadline.setStatus(TaskStatus.notStarted);
             deadlineRepository.save(deadline);
             return deadlineMapper.mapDeadlineToDeadlineResponseDto(deadline);
         }
@@ -51,26 +50,30 @@ public class DeadlineServiceImpl implements DeadlineService {
     public DeadlineResponseDto updateDeadline(Long id, DeadlineRequestDto deadlineRequestDto) {
         if (deadlineRepository.getDeadlineById(id).isPresent()) {
             Deadline deadline = deadlineRepository.getDeadlineById(id).get();
-            if (deadlineRequestDto.deadLine().isBefore(LocalDateTime.now())) {
+            if (deadlineRequestDto.theEnd().isBefore(LocalDateTime.now())) {
                 throw new IllegalTimeArgument("Не пытайся обмануть меня, человек!");
             } else {
-                deadline.setDeadline(deadlineRequestDto.deadLine());
+                deadline.setTheEnd(deadlineRequestDto.theEnd());
             }
             deadline.setName(deadlineRequestDto.name());
             deadline.setDescription(deadlineRequestDto.description());
             deadlineRepository.save(deadline);
             return deadlineMapper.mapDeadlineToDeadlineResponseDto(deadline);
         } else {
-            throw new IllegalArgumentException("Specified deadline does not exist!");
+            throw new IllegalArgumentException("Specified theEnd does not exist!");
         }
     }
 
     @Override
     public TaskStatus updateDeadlineStatus(Long id, TaskStatus taskStatus) {
-        if (deadlineRepository.getDeadlineById(id).isPresent()) {
-            deadlineRepository.getDeadlineById(id).get().setStatus(taskStatus);
+        if (deadlineRepository.existsById(id)) {
+            Deadline deadline = deadlineRepository.getDeadlineById(id).get();
+            deadline.setStatus(taskStatus);
+            deadlineRepository.save(deadline);
+            return taskStatus;
+        } else {
+            throw new IllegalArgumentException("Specified deadline does not exist!");
         }
-        throw new IllegalArgumentException("Specified deadline does not exist!");
     }
 
     @Override
@@ -79,21 +82,22 @@ public class DeadlineServiceImpl implements DeadlineService {
             deadlineRepository.deleteById(id);
             return AppStatus.success;
         } else {
-            throw new IllegalArgumentException("Specified deadline does not exist!");
+            throw new IllegalArgumentException("Specified theEnd does not exist!");
         }
     }
 
     public List<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end) {
         if (start.isAfter(end)) {
             throw new IllegalArgumentException("Start date cannot be after end date");
+        } else {
+            List<Deadline> currentDeadlines = deadlineRepository.getDeadlineByTheEndBetween(start, end).stream().toList();
+            return deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(currentDeadlines);
         }
-        List<Deadline> currentDeadlines = deadlineRepository.getDeadlineByDeadlineBetween(start, end).stream().toList();
-        return deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(currentDeadlines);
     }
 
     public List<DeadlineResponseDto> getDeadlinesByDay(LocalDate day) {
         LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
-        LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
+        LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(58);
         return getDeadlinesByRange(from, to);
     }
 

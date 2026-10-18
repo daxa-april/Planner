@@ -27,6 +27,7 @@ public class Deadline {
     private String name;
     private String description;
     private LocalDateTime whenGot;
-    private LocalDateTime deadline;
+    private LocalDateTime theEnd;
     private TaskStatus status;
+    //@Todo: разобраться с мисмэтчами по времени и дате.
 }

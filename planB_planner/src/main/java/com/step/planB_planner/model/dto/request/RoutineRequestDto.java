@@ -1,6 +1,7 @@
 package com.step.planB_planner.model.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -14,10 +15,10 @@ public record RoutineRequestDto(
 
         String description,
 
-        @NotBlank
+        @NotNull
         LocalDateTime startTime,
 
-        @NotBlank
+        @NotNull
         LocalDateTime endTime
 ) {
 

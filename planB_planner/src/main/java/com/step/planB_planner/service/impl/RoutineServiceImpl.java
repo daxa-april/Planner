@@ -54,7 +54,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             routineRepository.save(routine);
             return routineMapper.mapRoutineToRoutineResponseDto(routine);
         } else {
-            throw new IllegalArgumentException("Specified deadline does not exist!");
+            throw new IllegalArgumentException("Specified theEnd does not exist!");
         }
     }
 
@@ -64,7 +64,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             routineRepository.findRoutineById(id).get().setStatus(taskStatus);
             return taskStatus;
         } else {
-            throw new IllegalArgumentException("Specified deadline does not exist!");
+            throw new IllegalArgumentException("Specified theEnd does not exist!");
         }
     }
 
@@ -74,7 +74,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             routineRepository.deleteById(id);
             return AppStatus.success;
         } else {
-            throw new IllegalArgumentException("Specified deadline does not exist!");
+            throw new IllegalArgumentException("Specified theEnd does not exist!");
         }
     }
 
