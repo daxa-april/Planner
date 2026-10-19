@@ -1,5 +1,6 @@
 package com.step.planB_planner.controller;
 
+import com.step.planB_planner.annotation.Log;
 import com.step.planB_planner.constant.AppStatus;
 import com.step.planB_planner.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.DeadlineRequestDto;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * @author Daria Pevets
  **/
+@Log
 @RequiredArgsConstructor
 @RestController("/api/deadlines/")
 public class DeadlineController {
