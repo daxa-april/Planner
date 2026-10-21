@@ -1,0 +1,8 @@
+2026-10-21 13:56:32 [http-nio-8080-exec-9] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleTaskException:
+Request: [com.step.planB_planner.exception.TaskException: А ты очень забывчив(а) однако!, ServletWebRequest: uri=/add;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-10-21T13:56:32.197640300, status=400 BAD_REQUEST, message=А ты очень забывчив(а) однако!, path=/add)
+Time: 1
+2026-10-21 13:57:15 [http-nio-8080-exec-7] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleIllegalTimeArgument:
+Request: [com.step.planB_planner.exception.IllegalTimeArgument: Совсем сдурел?, ServletWebRequest: uri=/add;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-10-21T13:57:15.247125200, status=400 BAD_REQUEST, message=Совсем сдурел?, path=/add)
+Time: 0

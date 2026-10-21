@@ -1,9 +1,12 @@
 package com.step.planB_planner.aspect;
 
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -12,9 +15,11 @@ import java.util.Arrays;
 /**
  * @author Daria Pevets
  **/
-@Slf4j
 @Aspect
+@Component
 public class LogAspect {
+
+    private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     @Pointcut("@within(com.step.planB_planner.annotation.Log)")
     public void pointCut() {
@@ -26,6 +31,7 @@ public class LogAspect {
      * @param joinPoint ProceedingJoinPoint
      * @return результат перехваченного вызова
      */
+    @Around("pointCut()")
     public Object loggingMethod(ProceedingJoinPoint joinPoint) throws Throwable {
         LocalDateTime before = LocalDateTime.now();
         Object result = joinPoint.proceed(joinPoint.getArgs());
@@ -42,9 +48,9 @@ public class LogAspect {
                 result,
                 Duration.between(before, after).toMillis());
         if (className.endsWith("Handler")) {
-            log.error(logMessage);
+            logger.error(logMessage);
         } else {
-            log.info(logMessage);
+            logger.info(logMessage);
         }
         return result;
     }
