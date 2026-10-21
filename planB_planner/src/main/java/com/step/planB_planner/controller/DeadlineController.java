@@ -21,37 +21,37 @@ import java.util.List;
 public class DeadlineController {
     private final DeadlineService deadlineService;
 
-    @PostMapping("/add")
+    @PostMapping("/addDeadline")
     public DeadlineResponseDto createDeadline(@RequestBody DeadlineRequestDto deadlineRequestDto) {
         return deadlineService.addDeadline(deadlineRequestDto);
     }
 
-    @PatchMapping("/update")
+    @PatchMapping("/updateDeadline")
     public DeadlineResponseDto updateDeadline(Long id, DeadlineRequestDto deadlineRequestDto) {
         return deadlineService.updateDeadline(id, deadlineRequestDto);
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/deleteDeadline")
     public AppStatus deleteDeadline(Long id) {
         return deadlineService.deleteDeadline(id);
     }
 
-    @GetMapping("/day/{date}")
+    @GetMapping("/deadlineDay/{date}")
     public List<DeadlineResponseDto> getDeadlinesByDate(@PathVariable LocalDate date) {
         return deadlineService.getDeadlinesByDay(date);
     }
 
-    @GetMapping("/week/{weekStart}")
+    @GetMapping("/deadlineWeek/{weekStart}")
     public List<DeadlineResponseDto> getDeadlinesByWeek(@PathVariable LocalDate weekStart) {
         return deadlineService.getDeadlinesByWeek(weekStart);
     }
 
-    @GetMapping("/month/{monthStart}")
+    @GetMapping("/deadlineMonth/{monthStart}")
     public List<DeadlineResponseDto> getDeadlinesByMonth(@PathVariable LocalDate monthStart) {
         return deadlineService.getDeadLinesByMonth(monthStart);
     }
 
-    @PatchMapping("/status")
+    @PatchMapping("/deadlineStatus")
     public TaskStatus updateDeadlineStatus(@RequestParam Long id, @RequestParam TaskStatus newStatus) {
         return deadlineService.updateDeadlineStatus(id, newStatus);
     }

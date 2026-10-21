@@ -29,4 +29,5 @@ public class Routine {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private TaskStatus status;
+    //@ToDo: зафиналить все контроллеры, и можно писать фронт.
 }

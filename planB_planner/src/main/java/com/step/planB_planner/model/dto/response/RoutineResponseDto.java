@@ -1,5 +1,7 @@
 package com.step.planB_planner.model.dto.response;
 
+import com.step.planB_planner.constant.TaskStatus;
+
 import java.time.LocalDateTime;
 
 /**
@@ -11,6 +13,6 @@ public record RoutineResponseDto(
         String description,
         LocalDateTime startTime,
         LocalDateTime endTime,
-        boolean completed
+        TaskStatus status
 ) {
 }

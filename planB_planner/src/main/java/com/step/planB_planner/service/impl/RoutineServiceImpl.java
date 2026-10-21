@@ -38,6 +38,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             throw new IllegalTimeArgument("Я с тобой не разговариваю...");
         } else {
             Routine routine = routineMapper.mapRoutineRequestDtoToRoutine(routineRequestDto);
+            routine.setStatus(TaskStatus.notStarted);
             routineRepository.save(routine);
             return routineMapper.mapRoutineToRoutineResponseDto(routine);
         }
@@ -92,13 +93,13 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
         return getRoutinesByRange(from, to);
     }
 
-    public List<RoutineResponseDto> getTasksByWeek(LocalDate date) {
+    public List<RoutineResponseDto> getRoutineByWeek(LocalDate date) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
         return getRoutinesByRange(from, to);
     }
 
-    public List<RoutineResponseDto> getTasksByMonth(LocalDate date) {
+    public List<RoutineResponseDto> getRoutineByMonth(LocalDate date) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
         return getRoutinesByRange(from, to);

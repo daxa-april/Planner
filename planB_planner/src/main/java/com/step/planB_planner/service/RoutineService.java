@@ -26,7 +26,7 @@ public interface RoutineService {
 
     List<RoutineResponseDto> getRoutineByDay(LocalDate date);
 
-    List<RoutineResponseDto> getTasksByWeek(LocalDate date);
+    List<RoutineResponseDto> getRoutineByWeek(LocalDate date);
 
-    List<RoutineResponseDto> getTasksByMonth(LocalDate date);
+    List<RoutineResponseDto> getRoutineByMonth(LocalDate date);
 }

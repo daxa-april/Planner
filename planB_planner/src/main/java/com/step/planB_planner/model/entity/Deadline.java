@@ -29,5 +29,4 @@ public class Deadline {
     private LocalDateTime whenGot;
     private LocalDateTime theEnd;
     private TaskStatus status;
-    //@Todo: разобраться с мисмэтчами по времени и дате.
 }

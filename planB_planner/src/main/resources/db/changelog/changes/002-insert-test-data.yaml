@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3-insert-test-data
+      author: Dari_Pevets
+      changes:
+
+        - insert:
+            tableName: routine
+            columns:
+              - column: { name: name, value: "Тренировка" }
+              - column: { name: description, value: "Спина + кор" }
+              - column: { name: start_time, valueDate: "2026-10-21T11:30:00" }
+              - column: { name: end_time, valueDate: "2026-10-21T11:30:00" }
+              - column: { name: status, value: "completed" }
+
+        - insert:
+            tableName: routine
+            columns:
+              - column: { name: name, value: "Тренировка" }
+              - column: { name: description, value: "Спина + кор" }
+              - column: { name: start_time, valueDate: "2026-10-27T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-10-27T21:10:00" }
+              - column: { name: status, value: "notStarted" }
+
+        - insert:
+            tableName: routine
+            columns:
+              - column: { name: name, value: "Тренировка" }
+              - column: { name: description, value: "День ног" }
+              - column: { name: start_time, valueDate: "2026-10-23T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-10-23T21:30:00" }
+              - column: { name: status, value: "notStarted" }
+
+        - insert:
+            tableName: routine
+            columns:
+              - column: { name: name, value: "Тренировка" }
+              - column: { name: description, value: "День ног" }
+              - column: { name: start_time, valueDate: "2026-10-30T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-10-30T21:30:00" }
+              - column: { name: status, value: "notStarted" }
