@@ -62,7 +62,9 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
     @Override
     public TaskStatus updateRoutineStatus(Long id, TaskStatus taskStatus) {
         if (routineRepository.findRoutineById(id).isPresent()) {
-            routineRepository.findRoutineById(id).get().setStatus(taskStatus);
+            Routine routine = routineRepository.findRoutineById(id).get();
+            routine.setStatus(taskStatus);
+            routineRepository.save(routine);
             return taskStatus;
         } else {
             throw new IllegalArgumentException("Specified theEnd does not exist!");

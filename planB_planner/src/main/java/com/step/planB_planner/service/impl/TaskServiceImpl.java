@@ -36,6 +36,7 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
             throw new IllegalTimeArgument("Еще вчера задачки к сожалению не делаются...(");
         }
         Task task = taskMapper.mapTaskRequestDtoToTask(taskRequestDto);
+        task.setStatus(TaskStatus.notStarted);
         taskRepository.save(task);
         return taskMapper.mapTaskToTaskResponseDto(task);
     }
@@ -59,7 +60,9 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
 
     public TaskStatus changeTaskStatus(Long id, TaskStatus status) {
         if (taskRepository.findTaskById(id).isPresent()) {
-            taskRepository.findTaskById(id).get().setStatus(status);
+            Task task = taskRepository.findTaskById(id).get();
+            task.setStatus(status);
+            taskRepository.save(task);
             return status;
         } else {
             throw new TaskException("Task with id " + id + " does not exist");
