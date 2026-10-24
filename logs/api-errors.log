@@ -1,4 +1,0 @@
-2026-10-24 21:44:55 [http-nio-8080-exec-5] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleIllegalTimeArgument:
-Request: [com.step.planB_planner.exception.IllegalTimeArgument: Я понимаю, что задача должна быть выполнена еще вчера, но будь реалистом!, ServletWebRequest: uri=/addDeadline;client=0:0:0:0:0:0:0:1]
-Response: ExceptionBody(timestamp=2026-10-24T21:44:55.947987900, status=400 BAD_REQUEST, message=Я понимаю, что задача должна быть выполнена еще вчера, но будь реалистом!, path=/addDeadline)
-Time: 0

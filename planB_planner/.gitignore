@@ -14,9 +14,10 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+.idea/
+*.iml
 *.idea
 *.iws
-*.iml
 *.ipr
 
 # Логи и временные файлы
