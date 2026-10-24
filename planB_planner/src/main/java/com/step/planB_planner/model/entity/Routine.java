@@ -1,6 +1,6 @@
 package com.step.planB_planner.model.entity;
 
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,5 +29,6 @@ public class Routine {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private TaskStatus status;
-    //@ToDo: зафиналить все контроллеры, и можно писать фронт.
+    private boolean notified = false;
+
 }

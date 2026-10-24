@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5af78e00-c3c1-4a1d-8414-3ea5e2353aad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/NotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/ScheduleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/planB_planner.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/api-errors.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/api-info.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/archived/api-errors-2026-10-21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/archived/api-info-2026-10-21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/PlanBPlannerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/PlanBPlannerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/constant/AppStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/constant/AppStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/constant/TaskStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/constant/TaskStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/DeadlineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/DeadlineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/RoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/RoutineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/DeadlineResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/DeadlineResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/RoutineResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/RoutineResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/TaskResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/dto/response/TaskResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Deadline.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Deadline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Routine.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Routine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/exBody/ExceptionBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/model/exceptionBody/ExceptionBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/repository/TaskRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/repository/TaskRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/DeadlineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/DeadlineService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/RoutineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/RoutineService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/DeadlineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/DeadlineServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/RoutineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/RoutineServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/main/java/com/step/planB_planner/service/impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/planB_planner/src/test/java/com/step/planB_planner/service/impl/DeadlineServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/planB_planner/src/test/java/com/step/planB_planner/service/impl/DeadlineServiceImplTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Record" />
+        <option value="Enum" />
+        <option value="Exception" />
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="3KjRCXYsXBr0QNfN0H8PiTQHAjK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.DeadlineServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.planB_planner [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.planB_planner [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.PlanBPlannerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature__1&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/java/pets/planB_planner&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.step.planB_planner.service" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.step.planB_planner.service.impl" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.PlanBPlannerApplication">
+    <configuration name="DeadlineServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="planB_planner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.step.planB_planner.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.step.planB_planner.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.step.planB_planner.service.impl.DeadlineServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlanBPlannerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="planB_planner" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.step.planB_planner.PlanBPlannerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DeadlineServiceImplTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-84258761d1cc-intellij.indexing.shared.core-IU-243.28141.18" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.28141.18" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5af78e00-c3c1-4a1d-8414-3ea5e2353aad" name="Changes" comment="" />
+      <created>1792068863955</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1792068863955</updated>
+      <workItem from="1792068865250" duration="2641000" />
+      <workItem from="1792071550464" duration="16433000" />
+      <workItem from="1792318806441" duration="6997000" />
+      <workItem from="1792326179621" duration="26000" />
+      <workItem from="1792418943979" duration="1480000" />
+      <workItem from="1792426924895" duration="2300000" />
+      <workItem from="1792500066595" duration="739000" />
+      <workItem from="1792578559233" duration="8944000" />
+      <workItem from="1792594249166" duration="1552000" />
+      <workItem from="1792688971306" duration="2000" />
+      <workItem from="1792689951652" duration="1829000" />
+      <workItem from="1792691838392" duration="1121000" />
+      <workItem from="1792702077484" duration="976000" />
+      <workItem from="1792776566948" duration="155000" />
+      <workItem from="1792777507485" duration="753000" />
+      <workItem from="1792836501033" duration="2147000" />
+      <workItem from="1792863235657" duration="3593000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

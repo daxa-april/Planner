@@ -1,7 +1,7 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.constant.AppStatus;
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.TaskMapper;
@@ -11,6 +11,7 @@ import com.step.planB_planner.model.entity.Task;
 import com.step.planB_planner.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,6 +27,7 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
     private final TaskRepository taskRepository;
     private final TaskMapper taskMapper;
 
+    @Transactional
     @Override
     public TaskResponseDto createTask(TaskRequestDto taskRequestDto) {
         if (taskRepository.findTaskByName(taskRequestDto.name()).isPresent()) {
@@ -36,11 +38,12 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
             throw new IllegalTimeArgument("Еще вчера задачки к сожалению не делаются...(");
         }
         Task task = taskMapper.mapTaskRequestDtoToTask(taskRequestDto);
-        task.setStatus(TaskStatus.notStarted);
+        task.setStatus(TaskStatus.NOT_STARTED);
         taskRepository.save(task);
         return taskMapper.mapTaskToTaskResponseDto(task);
     }
 
+    @Transactional
     public TaskResponseDto updateTask(Long id, TaskRequestDto taskRequestDto) {
         if (taskRepository.findTaskById(id).isPresent()) {
             Task task = taskRepository.findTaskById(id).get();
@@ -58,11 +61,11 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
         }
     }
 
+    @Transactional
     public TaskStatus changeTaskStatus(Long id, TaskStatus status) {
         if (taskRepository.findTaskById(id).isPresent()) {
             Task task = taskRepository.findTaskById(id).get();
             task.setStatus(status);
-            taskRepository.save(task);
             return status;
         } else {
             throw new TaskException("Task with id " + id + " does not exist");
@@ -72,7 +75,7 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
     public AppStatus deleteTask(Long id) {
         if (taskRepository.findTaskById(id).isPresent()) {
             taskRepository.deleteById(id);
-            return AppStatus.success;
+            return AppStatus.SUCCESS;
         } else {
             throw new TaskException("Task with id " + id + " does not exist");
         }

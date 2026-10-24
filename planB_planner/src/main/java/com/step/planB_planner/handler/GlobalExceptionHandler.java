@@ -3,7 +3,7 @@ package com.step.planB_planner.handler;
 import com.step.planB_planner.annotation.Log;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
-import com.step.planB_planner.model.exBody.ExceptionBody;
+import com.step.planB_planner.model.exceptionBody.ExceptionBody;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;

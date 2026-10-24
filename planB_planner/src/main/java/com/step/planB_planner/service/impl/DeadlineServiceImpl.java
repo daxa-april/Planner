@@ -1,7 +1,7 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.constant.AppStatus;
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.DeadlineMapper;
@@ -12,6 +12,7 @@ import com.step.planB_planner.repository.DeadlineRepository;
 import com.step.planB_planner.service.DeadlineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class DeadlineServiceImpl implements DeadlineService {
     private final DeadlineRepository deadlineRepository;
     private final DeadlineMapper deadlineMapper;
 
+    @Transactional
     @Override
     public DeadlineResponseDto addDeadline(DeadlineRequestDto deadlineRequestDto) {
 
@@ -40,12 +42,13 @@ public class DeadlineServiceImpl implements DeadlineService {
             throw new TaskException("Может таблеточки попить?");
         } else {
             Deadline deadline = deadlineMapper.mapDeadlineRequestDtoToDeadline(deadlineRequestDto);
-            deadline.setStatus(TaskStatus.notStarted);
+            deadline.setStatus(TaskStatus.NOT_STARTED);
             deadlineRepository.save(deadline);
             return deadlineMapper.mapDeadlineToDeadlineResponseDto(deadline);
         }
     }
 
+    @Transactional
     @Override
     public DeadlineResponseDto updateDeadline(Long id, DeadlineRequestDto deadlineRequestDto) {
         if (deadlineRepository.getDeadlineById(id).isPresent()) {
@@ -64,6 +67,7 @@ public class DeadlineServiceImpl implements DeadlineService {
         }
     }
 
+    @Transactional
     @Override
     public TaskStatus updateDeadlineStatus(Long id, TaskStatus taskStatus) {
         if (deadlineRepository.existsById(id)) {
@@ -80,7 +84,7 @@ public class DeadlineServiceImpl implements DeadlineService {
     public AppStatus deleteDeadline(Long id) {
         if (deadlineRepository.getDeadlineById(id).isPresent()) {
             deadlineRepository.deleteById(id);
-            return AppStatus.success;
+            return AppStatus.SUCCESS;
         } else {
             throw new IllegalArgumentException("Specified theEnd does not exist!");
         }

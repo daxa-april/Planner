@@ -1,6 +1,6 @@
 package com.step.planB_planner.model.entity;
 
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,4 +28,5 @@ public class Task {
     private String description;
     private LocalDateTime time;
     private TaskStatus status;
+    private boolean notified = false;
 }

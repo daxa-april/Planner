@@ -1,4 +1,4 @@
-package com.step.planB_planner.model.exBody;
+package com.step.planB_planner.model.exceptionBody;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

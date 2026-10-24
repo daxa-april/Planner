@@ -1,7 +1,7 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.constant.AppStatus;
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.RoutineMapper;
@@ -11,6 +11,7 @@ import com.step.planB_planner.model.entity.Routine;
 import com.step.planB_planner.repository.RoutineRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -26,6 +27,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
     private final RoutineRepository routineRepository;
     private final RoutineMapper routineMapper;
 
+    @Transactional
     @Override
     public RoutineResponseDto createRoutine(RoutineRequestDto routineRequestDto) {
         if (routineRepository.findRoutineByName(routineRequestDto.name()).isPresent()) {
@@ -38,12 +40,13 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             throw new IllegalTimeArgument("Я с тобой не разговариваю...");
         } else {
             Routine routine = routineMapper.mapRoutineRequestDtoToRoutine(routineRequestDto);
-            routine.setStatus(TaskStatus.notStarted);
+            routine.setStatus(TaskStatus.NOT_STARTED);
             routineRepository.save(routine);
             return routineMapper.mapRoutineToRoutineResponseDto(routine);
         }
     }
 
+    @Transactional
     @Override
     public RoutineResponseDto updateRoutine(Long id, RoutineRequestDto routineRequestDto) {
         if (routineRepository.findRoutineById(id).isPresent()) {
@@ -59,12 +62,12 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
         }
     }
 
+    @Transactional
     @Override
     public TaskStatus updateRoutineStatus(Long id, TaskStatus taskStatus) {
         if (routineRepository.findRoutineById(id).isPresent()) {
             Routine routine = routineRepository.findRoutineById(id).get();
             routine.setStatus(taskStatus);
-            routineRepository.save(routine);
             return taskStatus;
         } else {
             throw new IllegalArgumentException("Specified theEnd does not exist!");
@@ -75,7 +78,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
     public AppStatus deleteRoutine(Long id) {
         if (routineRepository.findRoutineById(id).isPresent()) {
             routineRepository.deleteById(id);
-            return AppStatus.success;
+            return AppStatus.SUCCESS;
         } else {
             throw new IllegalArgumentException("Specified theEnd does not exist!");
         }

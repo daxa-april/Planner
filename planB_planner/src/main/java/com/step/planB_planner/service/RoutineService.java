@@ -1,7 +1,7 @@
 package com.step.planB_planner.service;
 
-import com.step.planB_planner.constant.AppStatus;
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.RoutineRequestDto;
 import com.step.planB_planner.model.dto.response.RoutineResponseDto;
 

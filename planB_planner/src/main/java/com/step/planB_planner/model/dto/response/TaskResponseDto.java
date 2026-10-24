@@ -1,6 +1,6 @@
 package com.step.planB_planner.model.dto.response;
 
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 
 import java.time.LocalDateTime;
 

@@ -1,7 +1,7 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.constant.AppStatus;
-import com.step.planB_planner.constant.TaskStatus;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.DeadlineMapper;
@@ -55,7 +55,7 @@ class DeadlineServiceImplTest {
                     "Описание",
                     LocalDateTime.now(),
                     LocalDateTime.now().plusHours(1),
-                    TaskStatus.notStarted
+                    TaskStatus.NOT_STARTED
             );
 
             when(deadlineRepository.getDeadlineByName(request.name())).thenReturn(Optional.empty());
@@ -65,7 +65,7 @@ class DeadlineServiceImplTest {
 
             DeadlineResponseDto result = deadlineService.addDeadline(request);
             assertNotNull(result);
-            assertEquals(TaskStatus.notStarted, deadline.getStatus());
+            assertEquals(TaskStatus.NOT_STARTED, deadline.getStatus());
             verify(deadlineRepository, times(1)).save(deadline);
         }
 
@@ -138,7 +138,7 @@ class DeadlineServiceImplTest {
                     "Описание",
                     LocalDateTime.now().plusHours(1),
                     LocalDateTime.now().plusHours(2),
-                    TaskStatus.notStarted
+                    TaskStatus.NOT_STARTED
             );
 
             when(deadlineRepository.getDeadlineById(id)).thenReturn(Optional.of(existingDeadline));
@@ -190,7 +190,7 @@ class DeadlineServiceImplTest {
         void updateDeadlineStatusSuccess() {
 
             Long id = 1L;
-            TaskStatus newStatus = TaskStatus.inProgress;
+            TaskStatus newStatus = TaskStatus.IN_PROGRESS;
             Deadline deadline = new Deadline();
             when(deadlineRepository.existsById(id)).thenReturn(true);
             when(deadlineRepository.getDeadlineById(id)).thenReturn(Optional.of(deadline));
@@ -208,7 +208,7 @@ class DeadlineServiceImplTest {
             Long id = 1L;
             when(deadlineRepository.existsById(id)).thenReturn(false);
             assertThrows(IllegalArgumentException.class,
-                    () -> deadlineService.updateDeadlineStatus(id, TaskStatus.notStarted));
+                    () -> deadlineService.updateDeadlineStatus(id, TaskStatus.NOT_STARTED));
         }
 
         @Test
@@ -219,7 +219,7 @@ class DeadlineServiceImplTest {
 
             AppStatus result = deadlineService.deleteDeadline(id);
 
-            assertEquals(AppStatus.success, result);
+            assertEquals(AppStatus.SUCCESS, result);
             verify(deadlineRepository, times(1)).deleteById(id);
         }
 
@@ -246,7 +246,7 @@ class DeadlineServiceImplTest {
                     "Описание",
                     LocalDateTime.now().plusHours(1),
                     LocalDateTime.now().plusHours(2),
-                    TaskStatus.notStarted
+                    TaskStatus.NOT_STARTED
             ));
 
             when(deadlineRepository.getDeadlineByTheEndBetween(start, end)).
