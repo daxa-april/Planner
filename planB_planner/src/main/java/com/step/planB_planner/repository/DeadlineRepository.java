@@ -1,6 +1,8 @@
 package com.step.planB_planner.repository;
 
 import com.step.planB_planner.model.entity.Deadline;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
@@ -17,5 +19,5 @@ public interface DeadlineRepository extends JpaRepository<Deadline, Long> {
 
     Optional<Deadline> getDeadlineByWhenGot(LocalDateTime whenGot);
 
-    Optional<Deadline> getDeadlineByTheEndBetween(LocalDateTime whenGot, LocalDateTime theEnd);
+    Page<Deadline> getDeadlineByTheEndBetween(LocalDateTime whenGot, LocalDateTime theEnd, Pageable pageable);
 }

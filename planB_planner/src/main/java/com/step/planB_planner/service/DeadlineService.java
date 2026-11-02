@@ -4,10 +4,10 @@ import com.step.planB_planner.model.constant.AppStatus;
 import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.DeadlineRequestDto;
 import com.step.planB_planner.model.dto.response.DeadlineResponseDto;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -22,11 +22,11 @@ public interface DeadlineService {
 
     AppStatus deleteDeadline(Long id);
 
-    List<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end);
+    Page<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize);
 
-    List<DeadlineResponseDto> getDeadlinesByDay(LocalDate day);
+    Page<DeadlineResponseDto> getDeadlinesByDay(LocalDate day, int page, int pageSize);
 
-    List<DeadlineResponseDto> getDeadlinesByWeek(LocalDate day);
+    Page<DeadlineResponseDto> getDeadlinesByWeek(LocalDate day, int page, int pageSize);
 
-    List<DeadlineResponseDto> getDeadLinesByMonth(LocalDate day);
+    Page<DeadlineResponseDto> getDeadLinesByMonth(LocalDate day, int page, int pageSize);
 }

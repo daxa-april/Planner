@@ -1,22 +1,25 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.model.constant.AppStatus;
-import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.DeadlineMapper;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.DeadlineRequestDto;
 import com.step.planB_planner.model.dto.response.DeadlineResponseDto;
 import com.step.planB_planner.model.entity.Deadline;
 import com.step.planB_planner.repository.DeadlineRepository;
 import com.step.planB_planner.service.DeadlineService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -90,30 +93,31 @@ public class DeadlineServiceImpl implements DeadlineService {
         }
     }
 
-    public List<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end) {
+    @Override
+    public Page<DeadlineResponseDto> getDeadlinesByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize) {
         if (start.isAfter(end)) {
             throw new IllegalArgumentException("Start date cannot be after end date");
         } else {
-            List<Deadline> currentDeadlines = deadlineRepository.getDeadlineByTheEndBetween(start, end).stream().toList();
-            return deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(currentDeadlines);
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("theEnd").descending());
+            return deadlineRepository.getDeadlineByTheEndBetween(start, end, pageable).map(deadlineMapper::mapDeadlineToDeadlineResponseDto);
         }
     }
 
-    public List<DeadlineResponseDto> getDeadlinesByDay(LocalDate day) {
+    public Page<DeadlineResponseDto> getDeadlinesByDay(LocalDate day, int page, int pageSize) {
         LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(58);
-        return getDeadlinesByRange(from, to);
+        return getDeadlinesByRange(from, to, page, pageSize);
     }
 
-    public List<DeadlineResponseDto> getDeadlinesByWeek(LocalDate day) {
+    public Page<DeadlineResponseDto> getDeadlinesByWeek(LocalDate day, int page, int pageSize) {
         LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = day.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getDeadlinesByRange(from, to);
+        return getDeadlinesByRange(from, to, page, pageSize);
     }
 
-    public List<DeadlineResponseDto> getDeadLinesByMonth(LocalDate day) {
+    public Page<DeadlineResponseDto> getDeadLinesByMonth(LocalDate day, int page, int pageSize) {
         LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = day.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getDeadlinesByRange(from, to);
+        return getDeadlinesByRange(from, to, page, pageSize);
     }
 }

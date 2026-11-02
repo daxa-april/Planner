@@ -9,10 +9,10 @@ import com.step.planB_planner.service.DeadlineService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -43,21 +43,27 @@ public class DeadlineController {
     }
 
     @Operation(summary = "акты мазохизма в конкретный день")
-    @GetMapping("/deadlineDay/{date}")
-    public List<DeadlineResponseDto> getDeadlinesByDate(@PathVariable LocalDate date) {
-        return deadlineService.getDeadlinesByDay(date);
+    @GetMapping("/deadlineDay")
+    public Page<DeadlineResponseDto> getDeadlinesByDate(@RequestParam LocalDate date,
+                                                        @RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "10") int size) {
+        return deadlineService.getDeadlinesByDay(date, page, size);
     }
 
     @Operation(summary = "акты мазохизма в конкретную неделю")
-    @GetMapping("/deadlineWeek/{weekStart}")
-    public List<DeadlineResponseDto> getDeadlinesByWeek(@PathVariable LocalDate weekStart) {
-        return deadlineService.getDeadlinesByWeek(weekStart);
+    @GetMapping("/deadlineWeek/")
+    public Page<DeadlineResponseDto> getDeadlinesByWeek(@RequestParam LocalDate weekStart,
+                                                        @RequestParam(defaultValue = "0") int page,
+                                                        @RequestParam(defaultValue = "10") int size) {
+        return deadlineService.getDeadlinesByWeek(weekStart, page, size);
     }
 
     @Operation(summary = "акты мазохизма в конкретный месяц")
-    @GetMapping("/deadlineMonth/{monthStart}")
-    public List<DeadlineResponseDto> getDeadlinesByMonth(@PathVariable LocalDate monthStart) {
-        return deadlineService.getDeadLinesByMonth(monthStart);
+    @GetMapping("/deadlineMonth")
+    public Page<DeadlineResponseDto> getDeadlinesByMonth(@RequestParam LocalDate monthStart,
+                                                         @RequestParam(defaultValue = "0") int page,
+                                                         @RequestParam(defaultValue = "10") int size) {
+        return deadlineService.getDeadLinesByMonth(monthStart, page, size);
     }
 
     @Operation(summary = "изменить отношения с актом мазохизма")

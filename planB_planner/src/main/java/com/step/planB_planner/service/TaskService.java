@@ -4,6 +4,7 @@ import com.step.planB_planner.model.constant.AppStatus;
 import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.TaskRequestDto;
 import com.step.planB_planner.model.dto.response.TaskResponseDto;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,11 +23,11 @@ public interface TaskService {
 
     AppStatus deleteTask(Long id);
 
-    List<TaskResponseDto> getTasksByRange(LocalDateTime start, LocalDateTime end);
+    Page<TaskResponseDto> getTasksByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize);
 
-    List<TaskResponseDto> getTasksByDay(LocalDate date);
+    Page<TaskResponseDto> getTasksByDay(LocalDate date, int page, int pageSize);
 
-    List<TaskResponseDto> getTasksByWeek(LocalDate date);
+    Page<TaskResponseDto> getTasksByWeek(LocalDate date, int page, int pageSize);
 
-    List<TaskResponseDto> getTasksByMonth(LocalDate date);
+    Page<TaskResponseDto> getTasksByMonth(LocalDate date, int page, int pageSize);
 }

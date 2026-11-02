@@ -1,10 +1,10 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.model.constant.AppStatus;
-import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.DeadlineMapper;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.DeadlineRequestDto;
 import com.step.planB_planner.model.dto.response.DeadlineResponseDto;
 import com.step.planB_planner.model.entity.Deadline;
@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -239,7 +240,14 @@ class DeadlineServiceImplTest {
         void getDeadlinesByRange() {
             LocalDateTime start = LocalDateTime.now();
             LocalDateTime end = LocalDateTime.now().plusDays(1);
+            int page = 1;
+            int pageSize = 10;
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("time").descending());
+
             List<Deadline> mockList = Collections.singletonList(new Deadline());
+
+            Page<Deadline> mockPage = new PageImpl<>(mockList, pageable, mockList.size());
+
             List<DeadlineResponseDto> mockResponseList = Collections.singletonList(new DeadlineResponseDto(
                     1L,
                     "Название",
@@ -249,15 +257,17 @@ class DeadlineServiceImplTest {
                     TaskStatus.NOT_STARTED
             ));
 
-            when(deadlineRepository.getDeadlineByTheEndBetween(start, end)).
-                    thenReturn(Optional.of(mockList.get(0)));
-            when(deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(any())).
-                    thenReturn(mockResponseList);
+            when(deadlineRepository.getDeadlineByTheEndBetween(start, end, pageable))
+                    .thenReturn(mockPage);
+            when(deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(any()))
+                    .thenReturn(mockResponseList);
 
-            List<DeadlineResponseDto> result = deadlineService.getDeadlinesByRange(start, end);
+            Page<DeadlineResponseDto> result = deadlineService.getDeadlinesByRange(start, end, page, pageSize);
             // Assert
             assertNotNull(result);
-            assertEquals(1, result.size());
+            assertEquals(1, result.getTotalElements());
+            assertEquals(1, result.getContent().size());
+            assertEquals(mockResponseList.get(0).name(), result.getContent().get(0).name());
         }
     }
 
@@ -265,20 +275,45 @@ class DeadlineServiceImplTest {
     void getDeadlinesByRangeStartAfterEnd() {
         LocalDateTime start = LocalDateTime.now().plusDays(1);
         LocalDateTime end = LocalDateTime.now();
+        int page = 1;
+        int pageSize = 10;
         assertThrows(IllegalArgumentException.class,
-                () -> deadlineService.getDeadlinesByRange(start, end));
+                () -> deadlineService.getDeadlinesByRange(start, end, page, pageSize));
     }
 
     @Test
     void getDeadlinesByDaySuccess() {
         LocalDate day = LocalDate.now();
-        when(deadlineRepository.getDeadlineByTheEndBetween(any(), any())).
-                thenReturn(Optional.of(new Deadline()));
-        List<DeadlineResponseDto> result = deadlineService.getDeadlinesByDay(day);
+        LocalDateTime startOfDay = day.atStartOfDay();
+        LocalDateTime endOfDay = day.atTime(23, 59, 59);
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("time").descending());
+
+        List<Deadline> mockList = Collections.singletonList(new Deadline());
+        Page<Deadline> mockPage = new PageImpl<>(mockList, pageable, mockList.size());
+        List<DeadlineResponseDto> mockResponseList = Collections.singletonList(new DeadlineResponseDto(
+                1L,
+                "Название",
+                "Описание",
+                LocalDateTime.now(),
+                LocalDateTime.now(),
+                TaskStatus.NOT_STARTED
+        ));
+
+        when(deadlineRepository.getDeadlineByTheEndBetween(eq(startOfDay), eq(endOfDay), any(Pageable.class)))
+                .thenReturn(mockPage);
+
+        when(deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(any()))
+                .thenReturn(mockResponseList);
+
+        Page<DeadlineResponseDto> result = deadlineService.getDeadlinesByDay(day, pageable.getPageNumber(), pageable.getPageSize());
+
         assertNotNull(result);
+        assertEquals(1, result.getTotalElements());
+
         verify(deadlineRepository, times(1)).getDeadlineByTheEndBetween(
-                eq(day.atStartOfDay()),
-                eq(day.atStartOfDay().withHour(23).withMinute(59).withSecond(58))
+                eq(startOfDay),
+                eq(endOfDay),
+                any(Pageable.class)
         );
     }
 }

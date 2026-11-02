@@ -1,0 +1,12 @@
+2026-11-02 20:13:01 [http-nio-8080-exec-3] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/deadlineWeek/;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-02T20:13:01.229064600, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/deadlineWeek/)
+Time: 0
+2026-11-02 20:13:12 [http-nio-8080-exec-8] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/deadlineWeek/;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-02T20:13:12.379244400, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/deadlineWeek/)
+Time: 0
+2026-11-02 20:15:34 [http-nio-8080-exec-5] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/deadlineDay;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-02T20:15:34.919864500, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/deadlineDay)
+Time: 2

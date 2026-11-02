@@ -9,10 +9,10 @@ import com.step.planB_planner.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -50,20 +50,26 @@ public class TaskController {
     }
 
     @Operation(summary = "проблемы на сегодня")
-    @GetMapping("/taskDay/{date}")
-    public List<TaskResponseDto> getTasksByDay(@PathVariable LocalDate date) {
-        return taskService.getTasksByDay(date);
+    @GetMapping("/taskDay")
+    public Page<TaskResponseDto> getTasksByDay(@RequestParam LocalDate date,
+                                               @RequestParam(defaultValue = "0") int page,
+                                               @RequestParam(defaultValue = "10") int size) {
+        return taskService.getTasksByDay(date, page, size);
     }
 
     @Operation(summary = "проблемы на неделю")
-    @GetMapping("taskWeek/{date}")
-    public List<TaskResponseDto> getTasksByWeek(@PathVariable LocalDate date) {
-        return taskService.getTasksByWeek(date);
+    @GetMapping("taskWeek")
+    public Page<TaskResponseDto> getTasksByWeek(@RequestParam LocalDate date,
+                                                @RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "10") int size) {
+        return taskService.getTasksByWeek(date, page, size);
     }
 
     @Operation(summary = "проблемы на месяц")
-    @GetMapping("/taskMonth/{date}")
-    public List<TaskResponseDto> getTasksByMonth(@PathVariable LocalDate date) {
-        return taskService.getTasksByMonth(date);
+    @GetMapping("/taskMonth")
+    public Page<TaskResponseDto> getTasksByMonth(@RequestParam LocalDate date,
+                                                 @RequestParam(defaultValue = "0") int page,
+                                                 @RequestParam(defaultValue = "10") int size) {
+        return taskService.getTasksByMonth(date, page, size);
     }
 }

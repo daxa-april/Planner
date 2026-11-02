@@ -1,21 +1,24 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.model.constant.AppStatus;
-import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.TaskMapper;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.dto.request.TaskRequestDto;
 import com.step.planB_planner.model.dto.response.TaskResponseDto;
 import com.step.planB_planner.model.entity.Task;
 import com.step.planB_planner.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -81,30 +84,31 @@ public class TaskServiceImpl implements com.step.planB_planner.service.TaskServi
         }
     }
 
-    public List<TaskResponseDto> getTasksByRange(LocalDateTime start, LocalDateTime end) {
+    public Page<TaskResponseDto> getTasksByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize) {
         if (start.isAfter(end)) {
             throw new IllegalArgumentException("Start date cannot be after end date");
+        } else {
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("time").descending());
+            return taskRepository.findTaskByTimeBetween(start, end, pageable).map(taskMapper::mapTaskToTaskResponseDto);
         }
-        List<Task> currentTasks = taskRepository.findTaskByTimeBetween(start, end).stream().toList();
-        return taskMapper.mapTaskListToTaskResponseDtoList(currentTasks);
     }
 
-    public List<TaskResponseDto> getTasksByDay(LocalDate date) {
+    public Page<TaskResponseDto> getTasksByDay(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getTasksByRange(from, to);
+        return getTasksByRange(from, to, page, pageSize);
     }
 
-    public List<TaskResponseDto> getTasksByWeek(LocalDate date) {
+    public Page<TaskResponseDto> getTasksByWeek(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getTasksByRange(from, to);
+        return getTasksByRange(from, to, page, pageSize);
     }
 
-    public List<TaskResponseDto> getTasksByMonth(LocalDate date) {
+    public Page<TaskResponseDto> getTasksByMonth(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getTasksByRange(from, to);
+        return getTasksByRange(from, to, page, pageSize);
     }
 }
 
