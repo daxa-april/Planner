@@ -1,5 +1,6 @@
 package com.step.planB_planner.model.dto.request;
 
+import com.step.planB_planner.model.constant.WeekDays;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,6 +15,8 @@ public record RoutineRequestDto(
         String name,
 
         String description,
+
+        WeekDays weekDay,
 
         @NotNull
         LocalDateTime startTime,

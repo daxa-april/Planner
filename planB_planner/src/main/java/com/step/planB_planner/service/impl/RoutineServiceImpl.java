@@ -1,21 +1,25 @@
 package com.step.planB_planner.service.impl;
 
-import com.step.planB_planner.model.constant.AppStatus;
-import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.exception.IllegalTimeArgument;
 import com.step.planB_planner.exception.TaskException;
 import com.step.planB_planner.mapper.RoutineMapper;
+import com.step.planB_planner.model.constant.AppStatus;
+import com.step.planB_planner.model.constant.TaskStatus;
+import com.step.planB_planner.model.constant.WeekDays;
 import com.step.planB_planner.model.dto.request.RoutineRequestDto;
 import com.step.planB_planner.model.dto.response.RoutineResponseDto;
 import com.step.planB_planner.model.entity.Routine;
 import com.step.planB_planner.repository.RoutineRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -32,7 +36,7 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
     public RoutineResponseDto createRoutine(RoutineRequestDto routineRequestDto) {
         if (routineRepository.findRoutineByName(routineRequestDto.name()).isPresent()) {
             throw new TaskException("Routine with name " + routineRequestDto.name() + " already exists");
-        } else if (routineRepository.findRoutineByStartTime(routineRequestDto.startTime()).isPresent()) {
+        } else if (routineRepository.findRoutineByStartTime(routineRequestDto.startTime(), routineRequestDto.weekDay()).isPresent()) {
             throw new TaskException("Routine with start time " + routineRequestDto.startTime() + " already exists");
         } else if (routineRequestDto.startTime().isAfter(routineRequestDto.endTime())) {
             throw new IllegalTimeArgument("Опять хочешь все закончить еще вчера?");
@@ -84,29 +88,37 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
         }
     }
 
-    public List<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end) {
+    public Page<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize) {
         if (start.isAfter(end)) {
             throw new IllegalArgumentException("Start date cannot be after end date");
+        } else {
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("startTime").descending());
+            return routineRepository.findRoutineByStartTimeBetween(start, end, pageable).map(routineMapper::mapRoutineToRoutineResponseDto);
         }
-        List<Routine> currentTasks = routineRepository.findRoutineByStartTimeBetween(start, end).stream().toList();
-        return routineMapper.mapRoutineToRoutineResponseDtoList(currentTasks);
+
     }
 
-    public List<RoutineResponseDto> getRoutineByDay(LocalDate date) {
+    public Page<RoutineResponseDto> getRoutineByDay(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getRoutinesByRange(from, to);
+        return getRoutinesByRange(from, to, page, pageSize);
     }
 
-    public List<RoutineResponseDto> getRoutineByWeek(LocalDate date) {
+    public Page<RoutineResponseDto> getRoutineByDay(WeekDays weekDay, int page, int pageSize) {
+
+        Pageable pageable = PageRequest.of(page, pageSize, Sort.by("startTime").descending());
+        return routineRepository.findRoutinesByWeekDay(weekDay, pageable).map(routineMapper::mapRoutineToRoutineResponseDto);
+    }
+
+    public Page<RoutineResponseDto> getRoutineByWeek(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusDays(7).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getRoutinesByRange(from, to);
+        return getRoutinesByRange(from, to, page, pageSize);
     }
 
-    public List<RoutineResponseDto> getRoutineByMonth(LocalDate date) {
+    public Page<RoutineResponseDto> getRoutineByMonth(LocalDate date, int page, int pageSize) {
         LocalDateTime from = date.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
         LocalDateTime to = date.plusMonths(1).atStartOfDay().withHour(23).withMinute(59).withSecond(59);
-        return getRoutinesByRange(from, to);
+        return getRoutinesByRange(from, to, page, pageSize);
     }
 }

@@ -20,29 +20,29 @@ import java.time.LocalDate;
 @Log
 @RequiredArgsConstructor
 @RestController("/api/deadlines/")
-@Tag(name = "Дедлайны", description = "кому и чего ты должен, работяга несчастный")
+@Tag(name = "Deadlines", description = "tasks that must be completed in time")
 public class DeadlineController {
     private final DeadlineService deadlineService;
 
-    @Operation(summary = "новый акт мазохизма")
+    @Operation(summary = "new deadline")
     @PostMapping("/addDeadline")
     public DeadlineResponseDto createDeadline(@RequestBody DeadlineRequestDto deadlineRequestDto) {
         return deadlineService.addDeadline(deadlineRequestDto);
     }
 
-    @Operation(summary = "модификация акта мазохизма")
+    @Operation(summary = "change deadline")
     @PatchMapping("/updateDeadline")
     public DeadlineResponseDto updateDeadline(Long id, DeadlineRequestDto deadlineRequestDto) {
         return deadlineService.updateDeadline(id, deadlineRequestDto);
     }
 
-    @Operation(summary = "закончить мучения")
+    @Operation(summary = "delete deadline")
     @DeleteMapping("/deleteDeadline")
     public AppStatus deleteDeadline(Long id) {
         return deadlineService.deleteDeadline(id);
     }
 
-    @Operation(summary = "акты мазохизма в конкретный день")
+    @Operation(summary = "deadlines for a day")
     @GetMapping("/deadlineDay")
     public Page<DeadlineResponseDto> getDeadlinesByDate(@RequestParam LocalDate date,
                                                         @RequestParam(defaultValue = "0") int page,
@@ -50,7 +50,7 @@ public class DeadlineController {
         return deadlineService.getDeadlinesByDay(date, page, size);
     }
 
-    @Operation(summary = "акты мазохизма в конкретную неделю")
+    @Operation(summary = "deadlines for a week")
     @GetMapping("/deadlineWeek/")
     public Page<DeadlineResponseDto> getDeadlinesByWeek(@RequestParam LocalDate weekStart,
                                                         @RequestParam(defaultValue = "0") int page,
@@ -58,7 +58,7 @@ public class DeadlineController {
         return deadlineService.getDeadlinesByWeek(weekStart, page, size);
     }
 
-    @Operation(summary = "акты мазохизма в конкретный месяц")
+    @Operation(summary = "month's deadlines")
     @GetMapping("/deadlineMonth")
     public Page<DeadlineResponseDto> getDeadlinesByMonth(@RequestParam LocalDate monthStart,
                                                          @RequestParam(defaultValue = "0") int page,
@@ -66,7 +66,7 @@ public class DeadlineController {
         return deadlineService.getDeadLinesByMonth(monthStart, page, size);
     }
 
-    @Operation(summary = "изменить отношения с актом мазохизма")
+    @Operation(summary = "change deadline status")
     @PatchMapping("/deadlineStatus")
     public TaskStatus updateDeadlineStatus(@RequestParam Long id, @RequestParam TaskStatus newStatus) {
         return deadlineService.updateDeadlineStatus(id, newStatus);

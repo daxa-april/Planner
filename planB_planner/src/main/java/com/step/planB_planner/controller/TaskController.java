@@ -19,37 +19,37 @@ import java.time.LocalDate;
  **/
 @Log
 @RequiredArgsConstructor
-@Tag(name = "задачки", description = "простая разовая опция типа to-do по созданию самому себе проблем")
+@Tag(name = "tasks", description = "to-do")
 @RestController("/api/tasks/")
 public class TaskController {
 
     private final TaskService taskService;
 
-    @Operation(summary = "Создание новой проблемы")
+    @Operation(summary = "create task")
     @PostMapping("/addTask")
     public TaskResponseDto createTask(@RequestBody TaskRequestDto taskRequestDto) {
         return taskService.createTask(taskRequestDto);
     }
 
-    @Operation(summary = "эволюция проблемы")
+    @Operation(summary = "update task")
     @PatchMapping("/updateTask")
     public TaskResponseDto updateTask(Long Id, TaskRequestDto taskRequestDto) {
         return taskService.updateTask(Id, taskRequestDto);
     }
 
-    @Operation(summary = "наши отношения с проблемой в данный момент")
+    @Operation(summary = "update task status")
     @PatchMapping("/TaskStatus")
     public TaskStatus changeTaskStatus(Long Id, TaskStatus status) {
         return taskService.changeTaskStatus(Id, status);
     }
 
-    @Operation(summary = "Ну его нахер состояние")
+    @Operation(summary = "delete task")
     @DeleteMapping("/delete")
     public AppStatus deleteTask(Long Id) {
         return taskService.deleteTask(Id);
     }
 
-    @Operation(summary = "проблемы на сегодня")
+    @Operation(summary = "tasks for today")
     @GetMapping("/taskDay")
     public Page<TaskResponseDto> getTasksByDay(@RequestParam LocalDate date,
                                                @RequestParam(defaultValue = "0") int page,
@@ -57,7 +57,7 @@ public class TaskController {
         return taskService.getTasksByDay(date, page, size);
     }
 
-    @Operation(summary = "проблемы на неделю")
+    @Operation(summary = "tasks for a week")
     @GetMapping("taskWeek")
     public Page<TaskResponseDto> getTasksByWeek(@RequestParam LocalDate date,
                                                 @RequestParam(defaultValue = "0") int page,
@@ -65,7 +65,7 @@ public class TaskController {
         return taskService.getTasksByWeek(date, page, size);
     }
 
-    @Operation(summary = "проблемы на месяц")
+    @Operation(summary = "tasks for a month")
     @GetMapping("/taskMonth")
     public Page<TaskResponseDto> getTasksByMonth(@RequestParam LocalDate date,
                                                  @RequestParam(defaultValue = "0") int page,

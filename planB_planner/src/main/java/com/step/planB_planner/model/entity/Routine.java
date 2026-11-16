@@ -1,6 +1,7 @@
 package com.step.planB_planner.model.entity;
 
 import com.step.planB_planner.model.constant.TaskStatus;
+import com.step.planB_planner.model.constant.WeekDays;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,7 @@ public class Routine {
     private String description;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    private WeekDays weekDay;
     private TaskStatus status;
     private boolean notified = false;
 

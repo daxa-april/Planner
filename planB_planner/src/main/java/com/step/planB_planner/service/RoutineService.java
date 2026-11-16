@@ -2,12 +2,13 @@ package com.step.planB_planner.service;
 
 import com.step.planB_planner.model.constant.AppStatus;
 import com.step.planB_planner.model.constant.TaskStatus;
+import com.step.planB_planner.model.constant.WeekDays;
 import com.step.planB_planner.model.dto.request.RoutineRequestDto;
 import com.step.planB_planner.model.dto.response.RoutineResponseDto;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @author Daria Pevets
@@ -22,11 +23,13 @@ public interface RoutineService {
 
     AppStatus deleteRoutine(Long id);
 
-    List<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end);
+    Page<RoutineResponseDto> getRoutinesByRange(LocalDateTime start, LocalDateTime end, int page, int pageSize);
 
-    List<RoutineResponseDto> getRoutineByDay(LocalDate date);
+    Page<RoutineResponseDto> getRoutineByDay(LocalDate date, int page, int pageSize);
 
-    List<RoutineResponseDto> getRoutineByWeek(LocalDate date);
+    Page<RoutineResponseDto> getRoutineByDay(WeekDays weekDay, int page, int pageSize);
 
-    List<RoutineResponseDto> getRoutineByMonth(LocalDate date);
+    Page<RoutineResponseDto> getRoutineByWeek(LocalDate date, int page, int pageSize);
+
+    Page<RoutineResponseDto> getRoutineByMonth(LocalDate date, int page, int pageSize);
 }
