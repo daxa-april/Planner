@@ -105,7 +105,7 @@ public class DeadlineServiceImpl implements DeadlineService {
 
     public Page<DeadlineResponseDto> getDeadlinesByDay(LocalDate day, int page, int pageSize) {
         LocalDateTime from = day.atStartOfDay().withHour(0).withMinute(0).withSecond(0);
-        LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(58);
+        LocalDateTime to = day.atStartOfDay().withHour(23).withMinute(59).withSecond(59);
         return getDeadlinesByRange(from, to, page, pageSize);
     }
 

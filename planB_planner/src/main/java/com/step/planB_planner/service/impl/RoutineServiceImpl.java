@@ -62,19 +62,19 @@ public class RoutineServiceImpl implements com.step.planB_planner.service.Routin
             routineRepository.save(routine);
             return routineMapper.mapRoutineToRoutineResponseDto(routine);
         } else {
-            throw new IllegalArgumentException("Specified theEnd does not exist!");
+            throw new IllegalArgumentException("Specified routine does not exist!");
         }
     }
 
     @Transactional
     @Override
     public TaskStatus updateRoutineStatus(Long id, TaskStatus taskStatus) {
-        if (routineRepository.findRoutineById(id).isPresent()) {
+        if (routineRepository.existsById(id)) {
             Routine routine = routineRepository.findRoutineById(id).get();
             routine.setStatus(taskStatus);
             return taskStatus;
         } else {
-            throw new IllegalArgumentException("Specified theEnd does not exist!");
+            throw new IllegalArgumentException("Specified Routine does not exist!");
         }
     }
 

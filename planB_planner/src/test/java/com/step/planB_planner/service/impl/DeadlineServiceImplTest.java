@@ -240,34 +240,32 @@ class DeadlineServiceImplTest {
         void getDeadlinesByRange() {
             LocalDateTime start = LocalDateTime.now();
             LocalDateTime end = LocalDateTime.now().plusDays(1);
-            int page = 1;
+            int page = 0;
             int pageSize = 10;
-            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("time").descending());
 
+            Pageable pageable = PageRequest.of(page, pageSize, Sort.by("theEnd").descending());
             List<Deadline> mockList = Collections.singletonList(new Deadline());
-
             Page<Deadline> mockPage = new PageImpl<>(mockList, pageable, mockList.size());
-
-            List<DeadlineResponseDto> mockResponseList = Collections.singletonList(new DeadlineResponseDto(
+            DeadlineResponseDto mockResponseDto = new DeadlineResponseDto(
                     1L,
-                    "Название",
-                    "Описание",
-                    LocalDateTime.now().plusHours(1),
-                    LocalDateTime.now().plusHours(2),
+                    "name",
+                    "description",
+                    LocalDateTime.now(),
+                    LocalDateTime.now().plusDays(1),
                     TaskStatus.NOT_STARTED
-            ));
+
+            );
 
             when(deadlineRepository.getDeadlineByTheEndBetween(start, end, pageable))
                     .thenReturn(mockPage);
-            when(deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(any()))
-                    .thenReturn(mockResponseList);
+            when(deadlineMapper.mapDeadlineToDeadlineResponseDto(any(Deadline.class)))
+                    .thenReturn(mockResponseDto);
 
             Page<DeadlineResponseDto> result = deadlineService.getDeadlinesByRange(start, end, page, pageSize);
             // Assert
             assertNotNull(result);
             assertEquals(1, result.getTotalElements());
             assertEquals(1, result.getContent().size());
-            assertEquals(mockResponseList.get(0).name(), result.getContent().get(0).name());
         }
     }
 
@@ -286,24 +284,24 @@ class DeadlineServiceImplTest {
         LocalDate day = LocalDate.now();
         LocalDateTime startOfDay = day.atStartOfDay();
         LocalDateTime endOfDay = day.atTime(23, 59, 59);
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("time").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("theEnd").descending());
 
         List<Deadline> mockList = Collections.singletonList(new Deadline());
         Page<Deadline> mockPage = new PageImpl<>(mockList, pageable, mockList.size());
-        List<DeadlineResponseDto> mockResponseList = Collections.singletonList(new DeadlineResponseDto(
+        DeadlineResponseDto mockResponse = new DeadlineResponseDto(
                 1L,
                 "Название",
                 "Описание",
                 LocalDateTime.now(),
-                LocalDateTime.now(),
+                LocalDateTime.now().plusDays(1),
                 TaskStatus.NOT_STARTED
-        ));
+        );
 
         when(deadlineRepository.getDeadlineByTheEndBetween(eq(startOfDay), eq(endOfDay), any(Pageable.class)))
                 .thenReturn(mockPage);
 
-        when(deadlineMapper.mapDeadlineListToDeadlineResponseDtoList(any()))
-                .thenReturn(mockResponseList);
+        when(deadlineMapper.mapDeadlineToDeadlineResponseDto(any()))
+                .thenReturn(mockResponse);
 
         Page<DeadlineResponseDto> result = deadlineService.getDeadlinesByDay(day, pageable.getPageNumber(), pageable.getPageSize());
 
