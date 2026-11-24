@@ -1,10 +1,7 @@
 package com.step.planB_planner.model.entity;
 
 import com.step.planB_planner.model.constant.TaskStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -28,6 +25,8 @@ public class Deadline {
     private String description;
     private LocalDateTime whenGot;
     private LocalDateTime theEnd;
+
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
     private boolean notified = false;
 }

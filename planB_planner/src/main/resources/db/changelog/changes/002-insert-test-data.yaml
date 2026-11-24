@@ -7,35 +7,81 @@ databaseChangeLog:
         - insert:
             tableName: routine
             columns:
-              - column: { name: name, value: "Тренировка" }
-              - column: { name: description, value: "Спина + кор" }
-              - column: { name: start_time, valueDate: "2026-10-21T11:30:00" }
-              - column: { name: end_time, valueDate: "2026-10-21T11:30:00" }
-              - column: { name: status, value: "completed" }
+              - column: { name: name, value: "Workout" }
+              - column: { name: description, value: "Back + core" }
+              - column: { name: start_time, valueDate: "2026-12-21T11:30:00" }
+              - column: { name: end_time, valueDate: "2026-12-21T11:30:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: week_day, value: "MONDAY" }
+              - column: { name: notified, value: "false" }
 
         - insert:
             tableName: routine
             columns:
-              - column: { name: name, value: "Тренировка" }
-              - column: { name: description, value: "Спина + кор" }
-              - column: { name: start_time, valueDate: "2026-10-27T20:10:00" }
-              - column: { name: end_time, valueDate: "2026-10-27T21:10:00" }
-              - column: { name: status, value: "notStarted" }
+              - column: { name: name, value: "Workout" }
+              - column: { name: description, value: "Back + core" }
+              - column: { name: start_time, valueDate: "2026-12-27T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-12-27T21:10:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: week_day, value: "SUNDAY" }
+              - column: { name: notified, value: "false" }
 
         - insert:
             tableName: routine
             columns:
-              - column: { name: name, value: "Тренировка" }
-              - column: { name: description, value: "День ног" }
-              - column: { name: start_time, valueDate: "2026-10-23T20:10:00" }
-              - column: { name: end_time, valueDate: "2026-10-23T21:30:00" }
-              - column: { name: status, value: "notStarted" }
+              - column: { name: name, value: "Workout" }
+              - column: { name: description, value: "legs" }
+              - column: { name: start_time, valueDate: "2026-12-23T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-12-23T21:30:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: week_day, value: "WEDNESDAY" }
+              - column: { name: notified, value: "false" }
 
         - insert:
             tableName: routine
             columns:
-              - column: { name: name, value: "Тренировка" }
-              - column: { name: description, value: "День ног" }
-              - column: { name: start_time, valueDate: "2026-10-30T20:10:00" }
-              - column: { name: end_time, valueDate: "2026-10-30T21:30:00" }
-              - column: { name: status, value: "notStarted" }
+              - column: { name: name, value: "Workout" }
+              - column: { name: description, value: "legs" }
+              - column: { name: start_time, valueDate: "2026-12-30T20:10:00" }
+              - column: { name: end_time, valueDate: "2026-12-30T21:30:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: week_day, value: "WEDNESDAY" }
+              - column: { name: notified, value: "false" }
+
+        - insert:
+            tableName: task
+            columns:
+              - column: { name: name, value: "eat a report" }
+              - column: { name: description, value: "something happens here" }
+              - column: { name: time, valueDate: "2026-12-15T20:10:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: notified, value: "false" }
+
+        - insert:
+            tableName: task
+            columns:
+              - column: { name: name, value: "coffee" }
+              - column: { name: description, value: "something happens here" }
+              - column: { name: time, valueDate: "2026-12-17T20:10:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: notified, value: "false" }
+
+        - insert:
+            tableName: deadline
+            columns:
+              - column: { name: name, value: "extremely serious nothing" }
+              - column: { name: description, value: "something happens here" }
+              - column: { name: when_got, valueDate: "2026-12-25T20:10:00" }
+              - column: { name: the_end, valueDate: "2026-12-27T21:10:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: notified, value: "false" }
+
+        - insert:
+            tableName: deadline
+            columns:
+              - column: { name: name, value: "extremely serious nothing 2" }
+              - column: { name: description, value: "something happens here 3" }
+              - column: { name: when_got, valueDate: "2026-12-26T20:10:00" }
+              - column: { name: the_end, valueDate: "2026-12-28T21:10:00" }
+              - column: { name: status, value: "NOT_STARTED" }
+              - column: { name: notified, value: "false" }

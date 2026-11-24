@@ -1,0 +1,332 @@
+2026-11-16 16:55:54 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Starting PlanBPlannerApplication using Java 17.0.2 with PID 18196 (D:\java\pets\planB_planner\planB_planner\target\classes started by Asus in D:\java\pets\planB_planner)
+2026-11-16 16:55:54 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-16 16:55:54 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-16 16:55:54 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-11-16 16:55:55 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-11-16 16:55:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16 16:55:55 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2026-11-16 16:55:55 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-16 16:55:55 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-11-16 16:55:55 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-16 16:55:55 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-16 16:55:55 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1218 ms
+2026-11-16 16:55:56 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-16 16:55:56 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-16 16:55:56 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16 16:55:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Starting...
+2026-11-16 16:55:56 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - planB_planner - Added connection org.postgresql.jdbc.PgConnection@4e828754
+2026-11-16 16:55:56 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Start completed.
+2026-11-16 16:55:56 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Planner]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: Planner/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-16 16:55:57 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16 16:55:57 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 16:55:57 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-16 16:55:58 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16 16:55:58 [restartedMain] WARN  o.s.b.t.a.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-11-16 16:55:58 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-11-16 16:55:58 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-16 16:55:58 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Started PlanBPlannerApplication in 4.646 seconds (process running for 10.116)
+2026-11-16 16:56:14 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-16 16:56:14 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-16 16:56:14 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-11-16 16:56:14 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 528 ms
+2026-11-16 16:56:42 [http-nio-8080-exec-9] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.createDeadline:
+Request: [DeadlineRequestDto[name=string, description=string, whenGot=2026-11-16T13:56:32.023, theEnd=2026-12-16T13:56:32.023]]
+Response: DeadlineResponseDto[id=1, name=string, description=string, whenGot=2026-11-16T13:56:32.023, theEnd=2026-12-16T13:56:32.023, status=NOT_STARTED]
+Time: 111
+2026-11-16 16:57:30 [http-nio-8080-exec-10] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.updateDeadline:
+Request: [1, DeadlineRequestDto[name=string, description=vccvfvvfvfv, whenGot=2026-11-16T13:56:50.557, theEnd=2026-12-16T13:56:50.557]]
+Response: DeadlineResponseDto[id=1, name=string, description=vccvfvvfvfv, whenGot=2026-11-16T13:56:32.023, theEnd=2026-12-16T13:56:50.557, status=NOT_STARTED]
+Time: 36
+2026-11-16 16:57:42 [http-nio-8080-exec-1] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.updateDeadlineStatus:
+Request: [1, COMPLETED]
+Response: COMPLETED
+Time: 37
+2026-11-16 16:58:15 [http-nio-8080-exec-6] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.getDeadlinesByWeek:
+Request: [2026-11-16, 0, 10]
+Response: Page 1 of 0 containing UNKNOWN instances
+Time: 30
+2026-11-16 16:58:15 [http-nio-8080-exec-6] WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-11-16 16:58:49 [http-nio-8080-exec-5] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.getDeadlinesByWeek:
+Request: [2026-12-15, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.DeadlineResponseDto instances
+Time: 6
+2026-11-16 16:59:17 [http-nio-8080-exec-8] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.getDeadlinesByMonth:
+Request: [2026-12-15, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.DeadlineResponseDto instances
+Time: 7
+2026-11-16 16:59:30 [http-nio-8080-exec-4] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.getDeadlinesByDate:
+Request: [2026-12-15, 0, 10]
+Response: Page 1 of 0 containing UNKNOWN instances
+Time: 4
+2026-11-16 16:59:42 [http-nio-8080-exec-2] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.getDeadlinesByDate:
+Request: [2026-12-16, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.DeadlineResponseDto instances
+Time: 6
+2026-11-16 16:59:59 [http-nio-8080-exec-7] INFO  c.s.planB_planner.aspect.LogAspect - \nDeadlineController.deleteDeadline:
+Request: [1]
+Response: SUCCESS
+Time: 28
+2026-11-16 17:00:37 [http-nio-8080-exec-9] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.createTask:
+Request: [TaskRequestDto[name=string, description=string, time=2026-11-17T14:00:25.016]]
+Response: TaskResponseDto[id=1, name=string, description=string, time=2026-11-17T14:00:25.016, status=NOT_STARTED]
+Time: 22
+2026-11-16 17:00:59 [http-nio-8080-exec-3] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/updateTask;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-16T17:00:59.182555400, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/updateTask)
+Time: 2
+2026-11-16 17:00:59 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public com.step.planB_planner.model.dto.response.TaskResponseDto com.step.planB_planner.controller.TaskController.updateTask(java.lang.Long,com.step.planB_planner.model.dto.request.TaskRequestDto): [Field error in object 'taskRequestDto' on field 'time': rejected value [2026-11-16T14:00:43.396Z]; codes [typeMismatch.taskRequestDto.time,typeMismatch.time,typeMismatch.java.time.LocalDateTime,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [taskRequestDto.time,time]; arguments []; default message [time]]; default message [Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; Failed to convert from type [java.lang.String] to type [@jakarta.validation.constraints.NotNull java.time.LocalDateTime] for value [2026-11-16T14:00:43.396Z]]] ]
+2026-11-16 17:01:20 [http-nio-8080-exec-10] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/updateTask;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-16T17:01:20.982764400, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/updateTask)
+Time: 0
+2026-11-16 17:01:20 [http-nio-8080-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public com.step.planB_planner.model.dto.response.TaskResponseDto com.step.planB_planner.controller.TaskController.updateTask(java.lang.Long,com.step.planB_planner.model.dto.request.TaskRequestDto): [Field error in object 'taskRequestDto' on field 'time': rejected value [2026-11-16T14:00:43.396Z]; codes [typeMismatch.taskRequestDto.time,typeMismatch.time,typeMismatch.java.time.LocalDateTime,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [taskRequestDto.time,time]; arguments []; default message [time]]; default message [Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; Failed to convert from type [java.lang.String] to type [@jakarta.validation.constraints.NotNull java.time.LocalDateTime] for value [2026-11-16T14:00:43.396Z]]] ]
+2026-11-16 17:01:30 [http-nio-8080-exec-1] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/updateTask;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-16T17:01:30.932583300, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/updateTask)
+Time: 0
+2026-11-16 17:01:30 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public com.step.planB_planner.model.dto.response.TaskResponseDto com.step.planB_planner.controller.TaskController.updateTask(java.lang.Long,com.step.planB_planner.model.dto.request.TaskRequestDto): [Field error in object 'taskRequestDto' on field 'time': rejected value [2026-11-17T14:00:43.396Z]; codes [typeMismatch.taskRequestDto.time,typeMismatch.time,typeMismatch.java.time.LocalDateTime,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [taskRequestDto.time,time]; arguments []; default message [time]]; default message [Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; Failed to convert from type [java.lang.String] to type [@jakarta.validation.constraints.NotNull java.time.LocalDateTime] for value [2026-11-17T14:00:43.396Z]]] ]
+2026-11-16 17:01:47 [http-nio-8080-exec-6] ERROR c.s.planB_planner.aspect.LogAspect - \nGlobalExceptionHandler.handleException:
+Request: [ServletWebRequest: uri=/updateTask;client=0:0:0:0:0:0:0:1]
+Response: ExceptionBody(timestamp=2026-11-16T17:01:47.054313100, status=500 INTERNAL_SERVER_ERROR, message=Ну вот! Все сломал!, path=/updateTask)
+Time: 0
+2026-11-16 17:01:47 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public com.step.planB_planner.model.dto.response.TaskResponseDto com.step.planB_planner.controller.TaskController.updateTask(java.lang.Long,com.step.planB_planner.model.dto.request.TaskRequestDto): [Field error in object 'taskRequestDto' on field 'time': rejected value [2026-11-18T14:00:43.396Z]; codes [typeMismatch.taskRequestDto.time,typeMismatch.time,typeMismatch.java.time.LocalDateTime,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [taskRequestDto.time,time]; arguments []; default message [time]]; default message [Failed to convert value of type 'java.lang.String' to required type 'java.time.LocalDateTime'; Failed to convert from type [java.lang.String] to type [@jakarta.validation.constraints.NotNull java.time.LocalDateTime] for value [2026-11-18T14:00:43.396Z]]] ]
+2026-11-16 17:02:59 [http-nio-8080-exec-8] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.changeTaskStatus:
+Request: [1, COMPLETED]
+Response: COMPLETED
+Time: 25
+2026-11-16 17:03:29 [http-nio-8080-exec-4] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.getTasksByWeek:
+Request: [2026-11-17, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.TaskResponseDto instances
+Time: 15
+2026-11-16 17:04:00 [http-nio-8080-exec-2] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.getTasksByMonth:
+Request: [2026-11-17, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.TaskResponseDto instances
+Time: 4
+2026-11-16 17:04:19 [http-nio-8080-exec-7] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.getTasksByDay:
+Request: [2026-11-17, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.TaskResponseDto instances
+Time: 7
+2026-11-16 17:04:30 [http-nio-8080-exec-9] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.deleteTask:
+Request: [1]
+Response: SUCCESS
+Time: 24
+2026-11-16 17:05:49 [http-nio-8080-exec-10] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.createRoutine:
+Request: [RoutineRequestDto[name=workkkk, description=string, startTime=2026-11-16T14:05:24.364, endTime=2026-11-16T15:05:24.364]]
+Response: RoutineResponseDto[id=1, name=workkkk, description=string, startTime=2026-11-16T14:05:24.364, endTime=2026-11-16T15:05:24.364, status=NOT_STARTED]
+Time: 28
+2026-11-16 17:06:51 [http-nio-8080-exec-6] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.updateRoutine:
+Request: [1, RoutineRequestDto[name=workkk, description=sit with a smart face, startTime=2026-11-16T14:06:13.611, endTime=2026-11-16T15:06:13.611]]
+Response: RoutineResponseDto[id=1, name=workkk, description=sit with a smart face, startTime=2026-11-16T14:06:13.611, endTime=2026-11-16T15:06:13.611, status=NOT_STARTED]
+Time: 18
+2026-11-16 17:07:08 [http-nio-8080-exec-5] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.updateRoutineStatus:
+Request: [1, IN_PROGRESS]
+Response: IN_PROGRESS
+Time: 18
+2026-11-16 17:07:35 [http-nio-8080-exec-8] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.getRoutineByWeek:
+Request: [2026-11-16]
+Response: [RoutineResponseDto[id=1, name=workkk, description=sit with a smart face, startTime=2026-11-16T14:06:13.611, endTime=2026-11-16T15:06:13.611, status=IN_PROGRESS]]
+Time: 13
+2026-11-16 17:08:05 [http-nio-8080-exec-4] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.getRoutineByMonth:
+Request: [2026-11-16]
+Response: [RoutineResponseDto[id=1, name=workkk, description=sit with a smart face, startTime=2026-11-16T14:06:13.611, endTime=2026-11-16T15:06:13.611, status=IN_PROGRESS]]
+Time: 4
+2026-11-16 17:08:16 [http-nio-8080-exec-2] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.getRoutineByDay:
+Request: [2026-11-16]
+Response: [RoutineResponseDto[id=1, name=workkk, description=sit with a smart face, startTime=2026-11-16T14:06:13.611, endTime=2026-11-16T15:06:13.611, status=IN_PROGRESS]]
+Time: 3
+2026-11-16 17:08:30 [http-nio-8080-exec-7] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.deleteRoutine:
+Request: [1]
+Response: SUCCESS
+Time: 15
+2026-11-16 17:09:17 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-16 17:09:17 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-16 17:09:17 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 17:09:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown initiated...
+2026-11-16 17:09:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown completed.
+2026-11-16 17:12:08 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Starting PlanBPlannerApplication using Java 17.0.2 with PID 3468 (D:\java\pets\planB_planner\planB_planner\target\classes started by Asus in D:\java\pets\planB_planner)
+2026-11-16 17:12:08 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-16 17:12:08 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-16 17:12:08 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-11-16 17:12:08 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-11-16 17:12:09 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16 17:12:09 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 53 ms. Found 3 JPA repository interfaces.
+2026-11-16 17:12:09 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-16 17:12:09 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-11-16 17:12:09 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-16 17:12:09 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-16 17:12:09 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1069 ms
+2026-11-16 17:12:09 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-16 17:12:09 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-16 17:12:10 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16 17:12:10 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Starting...
+2026-11-16 17:12:10 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - planB_planner - Added connection org.postgresql.jdbc.PgConnection@367300ba
+2026-11-16 17:12:10 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Start completed.
+2026-11-16 17:12:10 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Planner]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: Planner/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-16 17:12:10 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16 17:12:10 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 17:12:10 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-16 17:12:11 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16 17:12:11 [restartedMain] WARN  o.s.b.t.a.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-11-16 17:12:11 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-11-16 17:12:11 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-16 17:12:11 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Started PlanBPlannerApplication in 3.738 seconds (process running for 4.375)
+2026-11-16 17:12:15 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-16 17:12:15 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-16 17:12:15 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-11-16 17:12:16 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 483 ms
+2026-11-16 17:12:49 [http-nio-8080-exec-5] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.createTask:
+Request: [TaskRequestDto[name=string, description=string, time=2026-11-16T19:00:27.586]]
+Response: TaskResponseDto[id=1, name=string, description=string, time=2026-11-16T19:00:27.586, status=NOT_STARTED]
+Time: 196
+2026-11-16 17:13:29 [http-nio-8080-exec-7] INFO  c.s.planB_planner.aspect.LogAspect - \nTaskController.updateTask:
+Request: [1, TaskRequestDto[name=string, description=dfghjkl, time=2026-11-16T19:00:27.586]]
+Response: TaskResponseDto[id=1, name=string, description=dfghjkl, time=2026-11-16T19:00:27.586, status=NOT_STARTED]
+Time: 29
+2026-11-16 17:14:03 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-16 17:14:03 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-16 17:14:03 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 17:14:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown initiated...
+2026-11-16 17:14:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown completed.
+2026-11-16 18:03:06 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Starting PlanBPlannerApplication using Java 17.0.2 with PID 5860 (D:\java\pets\planB_planner\planB_planner\target\classes started by Asus in D:\java\pets\planB_planner)
+2026-11-16 18:03:06 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-16 18:03:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-16 18:03:06 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-11-16 18:03:07 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-11-16 18:03:07 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16 18:03:07 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 3 JPA repository interfaces.
+2026-11-16 18:03:07 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-16 18:03:07 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-11-16 18:03:07 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-16 18:03:07 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-16 18:03:07 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1004 ms
+2026-11-16 18:03:08 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-16 18:03:08 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-16 18:03:08 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16 18:03:08 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Starting...
+2026-11-16 18:03:08 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - planB_planner - Added connection org.postgresql.jdbc.PgConnection@3342b690
+2026-11-16 18:03:08 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Start completed.
+2026-11-16 18:03:08 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Planner]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: Planner/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-16 18:03:09 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16 18:03:09 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 18:03:09 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-16 18:03:09 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16 18:03:09 [restartedMain] WARN  o.s.b.t.a.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-11-16 18:03:10 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-11-16 18:03:10 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-16 18:03:10 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Started PlanBPlannerApplication in 3.637 seconds (process running for 4.171)
+2026-11-16 18:03:22 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-16 18:03:22 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-16 18:03:22 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-11-16 18:03:23 [http-nio-8080-exec-2] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 655 ms
+2026-11-16 18:04:05 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-16 18:04:06 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-16 18:04:06 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 18:04:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown initiated...
+2026-11-16 18:04:06 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown completed.
+2026-11-16 18:17:09 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Starting PlanBPlannerApplication using Java 17.0.2 with PID 9532 (D:\java\pets\planB_planner\planB_planner\target\classes started by Asus in D:\java\pets\planB_planner)
+2026-11-16 18:17:09 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - No active profile set, falling back to 1 default profile: "default"
+2026-11-16 18:17:09 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-11-16 18:17:09 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-11-16 18:17:09 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-11-16 18:17:09 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16 18:17:09 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
+2026-11-16 18:17:10 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-11-16 18:17:10 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-11-16 18:17:10 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-11-16 18:17:10 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-11-16 18:17:10 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 939 ms
+2026-11-16 18:17:10 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-11-16 18:17:10 [restartedMain] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-11-16 18:17:10 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16 18:17:10 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Starting...
+2026-11-16 18:17:10 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - planB_planner - Added connection org.postgresql.jdbc.PgConnection@64bb775b
+2026-11-16 18:17:10 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Start completed.
+2026-11-16 18:17:10 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Planner]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.4
+	Default catalog/schema: Planner/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-16 18:17:11 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-16 18:17:11 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 18:17:11 [restartedMain] INFO  o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-16 18:17:11 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-16 18:17:12 [restartedMain] WARN  o.s.b.t.a.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-11-16 18:17:12 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-11-16 18:17:12 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-11-16 18:17:12 [restartedMain] INFO  c.s.p.PlanBPlannerApplication - Started PlanBPlannerApplication in 3.525 seconds (process running for 4.039)
+2026-11-16 18:17:25 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-16 18:17:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-11-16 18:17:25 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-11-16 18:17:26 [http-nio-8080-exec-4] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 654 ms
+2026-11-16 18:17:44 [http-nio-8080-exec-5] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.createRoutine:
+Request: [RoutineRequestDto[name=string, description=string, weekDay=MONDAY, startTime=2026-11-16T15:17:35.099, endTime=2026-11-16T19:17:35.099]]
+Response: RoutineResponseDto[id=1, name=string, description=string, startTime=2026-11-16T15:17:35.099, endTime=2026-11-16T19:17:35.099, weekDay=MONDAY, status=NOT_STARTED]
+Time: 225
+2026-11-16 18:18:04 [http-nio-8080-exec-6] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.updateRoutine:
+Request: [1, RoutineRequestDto[name=string, description=string, weekDay=MONDAY, startTime=2026-11-16T15:17:53.081, endTime=2026-11-16T19:17:53.081]]
+Response: RoutineResponseDto[id=1, name=string, description=string, startTime=2026-11-16T15:17:53.081, endTime=2026-11-16T19:17:53.081, weekDay=MONDAY, status=NOT_STARTED]
+Time: 37
+2026-11-16 18:18:22 [http-nio-8080-exec-7] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.updateRoutineStatus:
+Request: [1, IN_PROGRESS]
+Response: IN_PROGRESS
+Time: 19
+2026-11-16 18:18:38 [http-nio-8080-exec-9] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.getRoutineByDay:
+Request: [MONDAY, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.RoutineResponseDto instances
+Time: 25
+2026-11-16 18:18:38 [http-nio-8080-exec-9] WARN  o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier - Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-11-16 18:19:05 [http-nio-8080-exec-10] INFO  c.s.planB_planner.aspect.LogAspect - \nRoutineController.getRoutineByWeek:
+Request: [2026-11-16, 0, 10]
+Response: Page 1 of 1 containing com.step.planB_planner.model.dto.response.RoutineResponseDto instances
+Time: 10
+2026-11-16 18:19:28 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-16 18:19:28 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-11-16 18:19:28 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16 18:19:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown initiated...
+2026-11-16 18:19:28 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - planB_planner - Shutdown completed.

@@ -2,10 +2,7 @@ package com.step.planB_planner.model.entity;
 
 import com.step.planB_planner.model.constant.TaskStatus;
 import com.step.planB_planner.model.constant.WeekDays;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -29,7 +26,11 @@ public class Routine {
     private String description;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+
+    @Enumerated(EnumType.STRING)
     private WeekDays weekDay;
+
+    @Enumerated(EnumType.STRING)
     private TaskStatus status;
     private boolean notified = false;
 

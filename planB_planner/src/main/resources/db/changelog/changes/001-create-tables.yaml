@@ -37,6 +37,11 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     nullable: false
+              - column:
+                  name: notified
+                  type: boolean
+                  constraints:
+                    nullable: false
 
         - createTable:
             tableName: routine
@@ -71,6 +76,16 @@ databaseChangeLog:
                   type: varchar (50)
                   constraints:
                     nullable: false
+              - column:
+                  name: week_day
+                  type: varchar (50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: notified
+                  type: boolean
+                  constraints:
+                    nullable: false
 
         - createTable:
             tableName: task
@@ -98,5 +113,10 @@ databaseChangeLog:
               - column:
                   name: status
                   type: varchar (50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: notified
+                  type: boolean
                   constraints:
                     nullable: false
